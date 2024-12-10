@@ -4,12 +4,6 @@
 // Note however that the libraries it relies upon are copyright (c) 2023-2024, Payetools Foundation,
 // licensed under the MIT License or commercial licence terms as set out in the documentation.
 
-// This example code may be freely used without restriction; parts may be freely copied and
-// used without attribution but when the entire file is copied, the copyright notice above
-// must be retained.
-
-// Assumes the project has a reference to Payetools.Payroll available on nuget
-
 using Microsoft.Extensions.Logging;
 using Payetools.Common.Model;
 using Payetools.Hmrc.Common.Rti.Model;
