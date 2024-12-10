@@ -177,7 +177,7 @@ var fpsGovTalkMessage = govTalkMessageFactory.CreateMessage(
             credentials,
             testMode,
             employer.HmrcPayeReference ?? throw new InvalidOperationException("PAYE reference cannot be null"),
-            "steve@codefactors.co.uk",
+            "admin@payroll-processing.co.uk",
             fps);
 
 // new Uri("https://test-transaction-engine.tax.service.gov.uk/submission"));
@@ -239,7 +239,7 @@ var epsGovTalkMessage = govTalkMessageFactory.CreateMessage(
             credentials,
             testMode,
             employer.HmrcPayeReference ?? throw new InvalidOperationException("PAYE reference cannot be null"),
-            "steve@codefactors.co.uk",
+            "admin@payroll-processing.co.uk",
             eps);
 
 await RtiSubmissionHelper.SubmitRtiDocumentAsync(transactionEngineClient, govTalkMessageFactory, epsGovTalkMessage, logger);
