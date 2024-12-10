@@ -5,19 +5,20 @@ VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{AF555FB3-E197-4883-9DB2-3F7249884F85}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DpsExample", "src\DpsExample\DpsExample.csproj", "{D3CF8C50-1385-4A77-9564-B668DC9B6DBA}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Payetools.Samples.Dps", "src\Samples.Dps\Payetools.Samples.Dps.csproj", "{D3CF8C50-1385-4A77-9564-B668DC9B6DBA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RtiExample", "src\RtiExample\RtiExample.csproj", "{B8A45485-AA71-4441-9DFE-9337446033D3}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Payetools.Samples.Rti", "src\Samples.Rti\Payetools.Samples.Rti.csproj", "{B8A45485-AA71-4441-9DFE-9337446033D3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PayrollExample", "src\PayrollExample\PayrollExample.csproj", "{59AC61F2-065A-46D9-B759-91CFAFCB647E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Payetools.Samples.Payroll", "src\Samples.Payroll\Payetools.Samples.Payroll.csproj", "{59AC61F2-065A-46D9-B759-91CFAFCB647E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Payetools.Samples.PayrollPlusRti", "src\Samples.PayrollPlusRti\Payetools.Samples.PayrollPlusRti.csproj", "{4280739C-A03E-4DE6-A4B8-086B5E710BBB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Payetools.Samples.Common", "src\Samples.Common\Payetools.Samples.Common.csproj", "{71AEFC03-01F3-486C-86A2-2BC25CF21E00}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
-	EndGlobalSection
-	GlobalSection(SolutionProperties) = preSolution
-		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{D3CF8C50-1385-4A77-9564-B668DC9B6DBA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -32,10 +33,26 @@ Global
 		{59AC61F2-065A-46D9-B759-91CFAFCB647E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{59AC61F2-065A-46D9-B759-91CFAFCB647E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{59AC61F2-065A-46D9-B759-91CFAFCB647E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4280739C-A03E-4DE6-A4B8-086B5E710BBB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4280739C-A03E-4DE6-A4B8-086B5E710BBB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4280739C-A03E-4DE6-A4B8-086B5E710BBB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4280739C-A03E-4DE6-A4B8-086B5E710BBB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{71AEFC03-01F3-486C-86A2-2BC25CF21E00}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{71AEFC03-01F3-486C-86A2-2BC25CF21E00}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{71AEFC03-01F3-486C-86A2-2BC25CF21E00}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{71AEFC03-01F3-486C-86A2-2BC25CF21E00}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{D3CF8C50-1385-4A77-9564-B668DC9B6DBA} = {AF555FB3-E197-4883-9DB2-3F7249884F85}
 		{B8A45485-AA71-4441-9DFE-9337446033D3} = {AF555FB3-E197-4883-9DB2-3F7249884F85}
 		{59AC61F2-065A-46D9-B759-91CFAFCB647E} = {AF555FB3-E197-4883-9DB2-3F7249884F85}
+		{4280739C-A03E-4DE6-A4B8-086B5E710BBB} = {AF555FB3-E197-4883-9DB2-3F7249884F85}
+		{71AEFC03-01F3-486C-86A2-2BC25CF21E00} = {AF555FB3-E197-4883-9DB2-3F7249884F85}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {E4E5B27C-07C8-4465-A92D-3C74B3837F74}
 	EndGlobalSection
 EndGlobal

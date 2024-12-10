@@ -8,6 +8,7 @@ using Payetools.Common.Model;
 using Payetools.Payroll.Model;
 using Payetools.Payroll.PayRuns;
 using Payetools.Pensions.Model;
+using Payetools.Samples.Common.Payroll;
 using PayrollExample;
 using System.Collections.Immutable;
 
@@ -26,6 +27,7 @@ var employer = new Employer(
     null); // No bank account supplied
 
 // ##### Step 2 - create an employment for an employee #####
+// (Repeat this step for each employee)
 var employment = new Employment
 {
     NiCategory = NiCategory.A,
@@ -50,6 +52,7 @@ var payRunDetails = new PayRunDetails(
     new DateRange(new DateOnly(2024, 5, 1), new DateOnly(2024, 5, 31)));
 
 // ##### Step 4 - create the pay run input #####
+// (Repeat this step for each employee)
 var earnings = ImmutableArray.Create<IEarningsEntry>(
     new EarningsEntry
     {
@@ -67,7 +70,7 @@ var payRunInput = new EmployeePayRunInputEntry(
     payrolledBenefits,
     pensionContributions);
 
-var payRunEntries = new List<IEmployeePayRunInputEntry>() { payRunInput };
+List<IEmployeePayRunInputEntry> payRunEntries = [payRunInput];
 
 // ##### Step 5 - get a reference data provider, then get a pay run processor and run the pay run #####
 var helper = new ReferenceDataHelper(ReferenceDataResources);

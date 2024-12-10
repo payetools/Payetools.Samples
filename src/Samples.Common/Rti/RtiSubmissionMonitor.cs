@@ -9,22 +9,24 @@ using Payetools.Hmrc.Rti.Model;
 using Payetools.Hmrc.Rti.Model.Core;
 using Payetools.Hmrc.Rti.Model.Monitoring;
 
-namespace RtiExample;
+namespace Payetools.Samples.Common.Rti;
 
-internal class ExampleSubmissionMonitor : IRtiSubmissionMonitor
+public class RtiSubmissionMonitor : IRtiSubmissionMonitor
 {
     private readonly ILogger _logger;
 
-    public ExampleSubmissionMonitor(ILogger logger)
+    public RtiSubmissionMonitor(ILogger logger)
     {
         _logger = logger;
     }
+
     public Task NotifyErrorAsync(string? message, params object?[] args)
     {
         _logger.LogError(message, args);
 
         return Task.CompletedTask;
     }
+
 
     public Task NotifyInfoAsync(string? message, params object?[] args)
     {

@@ -20,4 +20,8 @@
     <PackageReference Include="Payetools.Payroll" Version="1.1.6" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Samples.Common\Payetools.Samples.Common.csproj" />
+  </ItemGroup>
+
 </Project>

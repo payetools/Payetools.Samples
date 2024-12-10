@@ -8,7 +8,7 @@ using Payetools.Hmrc.Common.Dps;
 using Payetools.Hmrc.Dps;
 using Payetools.Hmrc.Dps.Model.Messages;
 
-namespace DpsExample;
+namespace Payetools.Samples.Dps;
 
 internal class DpsMessageProcessor : IHmrcDpsMessageProcessor
 {

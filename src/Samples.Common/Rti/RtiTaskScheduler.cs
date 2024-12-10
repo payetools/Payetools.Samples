@@ -6,9 +6,9 @@
 
 using Payetools.Hmrc.Rti.Model;
 
-namespace RtiExample;
+namespace Payetools.Samples.Common.Rti;
 
-internal class SimpleTaskScheduler : ITaskScheduler
+public class RtiTaskScheduler : ITaskScheduler
 {
     public async Task ScheduleTask(Action task, TimeSpan periodFromNow)
     {

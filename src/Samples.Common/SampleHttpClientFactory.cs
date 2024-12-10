@@ -6,16 +6,17 @@
 
 using System.Net;
 
-namespace RtiExample;
+namespace Payetools.Samples.Common;
 
-internal class ExampleHttpClientFactory : IHttpClientFactory
+public class SampleHttpClientFactory : IHttpClientFactory
 {
     public HttpClient CreateClient(string name)
     {
-        HttpClientHandler handler = new HttpClientHandler()
+        var handler = new HttpClientHandler()
         {
             AutomaticDecompression = DecompressionMethods.GZip | DecompressionMethods.Deflate
         };
+
         return new HttpClient(handler);
     }
 }

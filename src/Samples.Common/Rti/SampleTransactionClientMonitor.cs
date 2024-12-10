@@ -9,13 +9,13 @@ using Payetools.Hmrc.Rti.Model.Core;
 using Payetools.Hmrc.Rti.Model.Monitoring;
 using System.Xml.Linq;
 
-namespace RtiExample;
+namespace Payetools.Samples.Common.Rti;
 
-internal class ExampleTransactionClientMonitor : IObserver<ITransactionEngineEvent>
+public class SampleTransactionClientMonitor : IObserver<ITransactionEngineEvent>
 {
     private readonly ILogger _logger;
 
-    public ExampleTransactionClientMonitor(ILogger logger)
+    public SampleTransactionClientMonitor(ILogger logger)
     {
         _logger = logger;
     }
@@ -46,7 +46,7 @@ internal class ExampleTransactionClientMonitor : IObserver<ITransactionEngineEve
                 if (value.ClientError != null)
                 {
                     _logger.LogInformation("ERROR: [{originalTransactionId}]", value.ClientError.OriginalTransactionId);
-                    _logger.LogInformation(value.ClientError.ErrorText, value.ClientError.ErrorData ?? Array.Empty<object>());
+                    _logger.LogInformation("Details: {text} {errorData}", value.ClientError.ErrorText, value.ClientError.ErrorData ?? Array.Empty<object>());
                 }
                 break;
         }
@@ -55,6 +55,6 @@ internal class ExampleTransactionClientMonitor : IObserver<ITransactionEngineEve
     private void LogGovTalkMessage(GovTalkMessage? message, string direction)
     {
         if (message?.MostRecentSerialisedMessage != null)
-            _logger.LogInformation($"{direction}:" + XDocument.Parse(message.MostRecentSerialisedMessage).ToString());
+            _logger.LogInformation("{direction}: {message}", direction, XDocument.Parse(message.MostRecentSerialisedMessage).ToString());
     }
 }

@@ -12,6 +12,8 @@ using Payetools.Hmrc.Rti.Diagnostics;
 using Payetools.Hmrc.Rti.Factories;
 using Payetools.Hmrc.Rti.Model;
 using Payetools.Payroll.Model;
+using Payetools.Samples.Common;
+using Payetools.Samples.Common.Rti;
 using RtiExample;
 using RtiExample.ExampleData;
 
@@ -39,16 +41,16 @@ var govTalkMessage = ExampleContentGenerator.MakeGovTalkDocument(
 //
 // Replace the URI below with new Uri("http://localhost:5665/LTS/LTSPostServlet") to test against the local test server.
 using var transactionEngineClient = new TransactionEngineClient(
-    new ExampleHttpClientFactory(),
-    new SimpleTaskScheduler(),
+    new SampleHttpClientFactory(),
+    new RtiTaskScheduler(),
     new Uri("https://test-transaction-engine.tax.service.gov.uk/submission"));
 
-using var _ = transactionEngineClient.Subscribe(new ExampleTransactionClientMonitor(logger));
+using var _ = transactionEngineClient.Subscribe(new SampleTransactionClientMonitor(logger));
 
 try
 {
     var submission = new RtiSubmission(
-        new ExampleSubmissionMonitor(logger),
+        new RtiSubmissionMonitor(logger),
         transactionEngineClient,
         govTalkMessageFactory,
         govTalkMessage);

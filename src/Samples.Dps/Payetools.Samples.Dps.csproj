@@ -14,4 +14,8 @@
     <PackageReference Include="Payetools.Hmrc.Dps" Version="1.1.2" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Samples.Common\Payetools.Samples.Common.csproj" />
+  </ItemGroup>
+
 </Project>

@@ -4,13 +4,14 @@
 // Note however that the libraries it relies upon are copyright (c) 2023-2024, Payetools Foundation,
 // licensed under the MIT License or commercial licence terms as set out in the documentation.
 
-using DpsExample;
 using Payetools.Common.Model;
 using Payetools.Hmrc.Common.Dps;
 using Payetools.Hmrc.Dps;
 using Payetools.Hmrc.Dps.Model;
 using Payetools.Hmrc.Dps.Model.Messages;
 using Payetools.Hmrc.Rti.Diagnostics;
+using Payetools.Samples.Common;
+using Payetools.Samples.Dps;
 
 var vendorId = "0000";
 
@@ -20,7 +21,7 @@ var creds = Environment.GetEnvironmentVariable("RTI_CREDENTIALS")?.Split(':', 2)
 var dpsCredentials = new DpsCredentials(creds[0], creds[1]);
 
 // Initialise a specific HttpClientFactory for the HMRC connection, as HMRC uses GZip compression which is not enabled by default
-var httpClientFactory = new TestHttpClientFactory();
+var httpClientFactory = new SampleHttpClientFactory();
 
 // NB Use the following endpoints for the live HMRC service:
 //    AuthEndpoint = new Uri("https://dps.ws.hmrc.gov.uk/dpsauthentication/service"),

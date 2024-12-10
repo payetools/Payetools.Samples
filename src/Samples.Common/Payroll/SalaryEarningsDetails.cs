@@ -6,9 +6,9 @@
 
 using Payetools.Payroll.Model;
 
-namespace PayrollExample;
+namespace Payetools.Samples.Common.Payroll;
 
-internal class SalaryEarningsDetails : IEarningsDetails
+public class SalaryEarningsDetails : IEarningsDetails
 {
     public string Name => "Salary";
 

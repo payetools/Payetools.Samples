@@ -5,9 +5,10 @@
 // licensed under the MIT License or commercial licence terms as set out in the documentation.
 
 using Payetools.ReferenceData;
+using Payetools.Samples.Common;
 using System.Reflection;
 
-namespace PayrollExample;
+namespace Payetools.Samples.Common.Payroll;
 
 // Helper class to simplify loading HMRC reference data provider from embedded resources
 public class ReferenceDataHelper
