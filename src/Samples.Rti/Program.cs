@@ -8,18 +8,13 @@ using Microsoft.Extensions.Logging;
 using Payetools.Common.Model;
 using Payetools.Hmrc.Common.Rti.Model;
 using Payetools.Hmrc.Rti;
-using Payetools.Hmrc.Rti.Diagnostics;
 using Payetools.Hmrc.Rti.Factories;
-using Payetools.Hmrc.Rti.Model;
 using Payetools.Payroll.Model;
 using Payetools.Samples.Common;
 using Payetools.Samples.Common.Rti;
-using RtiExample;
 using RtiExample.ExampleData;
 
-var logger = LoggerFactory
-    .Create(builder =>    builder.AddConsole())
-    .CreateLogger<Program>();
+var logger = Logging.MakeLogger<Program>();
 
 GovTalkMessageFactory govTalkMessageFactory = new GovTalkMessageFactory("0000", "Test Product", "1.0.0");
 
@@ -47,36 +42,11 @@ using var transactionEngineClient = new TransactionEngineClient(
 
 using var _ = transactionEngineClient.Subscribe(new SampleTransactionClientMonitor(logger));
 
-try
-{
-    var submission = new RtiSubmission(
-        new RtiSubmissionMonitor(logger),
-        transactionEngineClient,
-        govTalkMessageFactory,
-        govTalkMessage);
-
-    await submission.BeginSubmissionAsync();
-}
-catch (RtiSubmissionException ex)
-{
-    logger.LogError(ex, "Submission failed immediately");
-
-    switch (ex.SubmissionExceptionType)
-    {
-        case RtiSubmissionExceptionType.SingleError:
-            logger.LogError("Error message: {message}", ex.Message);
-            break;
-
-        case RtiSubmissionExceptionType.GovTalkError:
-            logger.LogError("Error message: {message}", ex.Message);
-            logger.LogError("GovTalkErrors: {errors}", string.Join("\r\n", ex.GovTalkErrors!.Select(gte => gte.ToString())));
-            break;
-
-        case RtiSubmissionExceptionType.ErrorResponse:
-            logger.LogError("Error message: {message}", ex.Message);
-            break;
-    }
-}
+await RtiSubmissionHelper.SubmitRtiDocumentAsync(
+    transactionEngineClient,
+    govTalkMessageFactory,
+    govTalkMessage,
+    logger);
 
 // Wait around to allow the transaction engine to process the submission; results are displayed in the console
 // via the ExampleTransactionClientMonitor created above

@@ -14,11 +14,9 @@ using Microsoft.Extensions.Logging;
 using Payetools.Common.Model;
 using Payetools.Hmrc.Common.Rti.Model;
 using Payetools.Hmrc.Rti;
-using Payetools.Hmrc.Rti.Diagnostics;
 using Payetools.Hmrc.Rti.Factories;
 using Payetools.Hmrc.Rti.Mapping;
 using Payetools.Hmrc.Rti.Model;
-using Payetools.Hmrc.Rti.Model.Core;
 using Payetools.Payroll.Hmrc;
 using Payetools.Payroll.Model;
 using Payetools.Payroll.PayRuns;
@@ -192,7 +190,7 @@ var transactionEngineClient = new TransactionEngineClient(
 
 using var _ = transactionEngineClient.Subscribe(new SampleTransactionClientMonitor(logger));
 
-await SubmitRtiDocumentAsync(transactionEngineClient, govTalkMessageFactory, fpsGovTalkMessage, logger);
+await RtiSubmissionHelper.SubmitRtiDocumentAsync(transactionEngineClient, govTalkMessageFactory, fpsGovTalkMessage, logger);
 
 await Task.Delay(30000);
 
@@ -244,44 +242,6 @@ var epsGovTalkMessage = govTalkMessageFactory.CreateMessage(
             "steve@codefactors.co.uk",
             eps);
 
-await SubmitRtiDocumentAsync(transactionEngineClient, govTalkMessageFactory, epsGovTalkMessage, logger);
+await RtiSubmissionHelper.SubmitRtiDocumentAsync(transactionEngineClient, govTalkMessageFactory, epsGovTalkMessage, logger);
 
 await Task.Delay(30000);
-
-static async Task SubmitRtiDocumentAsync(
-    ITransactionEngineClient transactionEngineClient,
-    GovTalkMessageFactory govTalkMessageFactory,
-    GovTalkMessage govTalkMessage,
-    ILogger logger)
-{
-    try
-    {
-        var submission = new RtiSubmission(
-            new RtiSubmissionMonitor(logger),
-            transactionEngineClient,
-            govTalkMessageFactory,
-            govTalkMessage);
-
-        await submission.BeginSubmissionAsync();
-    }
-    catch (RtiSubmissionException ex)
-    {
-        logger.LogError(ex, "Submission failed immediately");
-
-        switch (ex.SubmissionExceptionType)
-        {
-            case RtiSubmissionExceptionType.SingleError:
-                logger.LogError(ex.Message);
-                break;
-
-            case RtiSubmissionExceptionType.GovTalkError:
-                logger.LogError(ex.Message);
-                logger.LogError(string.Join("\r\n", ex.GovTalkErrors!.Select(gte => gte.ToString())));
-                break;
-
-            case RtiSubmissionExceptionType.ErrorResponse:
-                logger.LogError(ex.Message);
-                break;
-        }
-    }
-}
