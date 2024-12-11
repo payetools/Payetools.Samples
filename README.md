@@ -7,6 +7,11 @@ This repository contains sample code for the following:
 - HMRC's Real-Time Information (RTI) submissions
 - HMRC's Data Provisioning Service (DPS) access
 
+## Testing with HMRC Systems
+
+See the article [Registering with HMRC as a software developer for PAYE](/hmrc-registration.md) for
+information on gaining access to HMRC test systems.
+
 ### License
 This example code may be freely used without restriction - it may be freely copied, adapted and
 used without attribution.
