@@ -45,3 +45,14 @@ notifications of changes to the APIs you are using.  You can register on the fol
 more than one person in your company needs to receive notifications, you may wish to use a group email
 address for this purpose.  Note that Payetools monitors changes to HMRC's PAYE APIs and updates its
 libraries accordingly, so this step is optional.
+
+## Relevant HMRC Documentation
+
+For completeness, here is the list of HMRC documentation mentioned in the email template above (although
+much of this information is embedded within Payetools libraries so you don't need to know it):
+
+- [Basic guide for XML software developers](https://www.gov.uk/guidance/basic-guide-for-xml-software-developers)
+- [Software development for HMRC: detailed information](https://www.gov.uk/government/collections/software-development-for-hmrc-detailed-information)
+- [Real Time Information support for software developers](https://www.gov.uk/government/collections/real-time-information-online-internet-submissions-support-for-software-developers)
+- [PAYE Online support for software developers](https://www.gov.uk/government/collections/paye-online-support-for-software-developers)
+- [Transaction Engine support for software developers](https://www.gov.uk/government/collections/government-gateway-support-for-software-developers)
